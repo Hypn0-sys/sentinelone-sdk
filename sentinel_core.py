@@ -451,6 +451,28 @@ def threats_summary(base_url=DOMAIN, headers=None):
     return r
 
 
+def agents_health(base_url=DOMAIN, headers=None):
+    """ Undoc: Outputs the health across all operating systems """
+
+    ep_api = "/reports/network/health"
+    url = base_url + ep_api
+
+    r = requests.get(url, headers=headers)
+
+    return r
+
+
+def reports(base_url=DOMAIN, headers=None):
+    """ Undoc: Reports """
+
+    ep_api = "/reports"
+    url = base_url + ep_api
+
+    r = requests.get(url, headers=headers)
+
+    return r
+
+
 def mark_threat_id(base_url=DOMAIN, headers=None, threat_id=""):
     """ TBD: Beta mark suspicious threat via by threat_id as threat """
 
