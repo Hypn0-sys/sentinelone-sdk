@@ -3,13 +3,24 @@ __author__ = 'Jacolon Walker'
 __email__ = 'jacolon.walker@collectivehealth.com'
 
 import pprint
-from sentinel_core import *
+import sentinelone
+from ConfigParser import SafeConfigParser
+
+parser = SafeConfigParser()
+parser.read('config.ini')
+
+user = parser.get('creds', 'user')
+passwd = parser.get('creds', 'passwd')
+console = parser.get('endpoints', 'prod_domain')
 
 pp = pprint.PrettyPrinter(indent=4)
 
-auth_token = login(req_auth=AUTH)
+# Init
+client = sentinelone.SMgmt(user, passwd, console)
+client.auth()
 
-# replace 'system' with something you are searching for
-target_agent = fetch_agent_logs(headers=auth_token, query="system")
+# Fetch logs from a system. Replace 'hostname' with a system of interest
+logs = client.fetch_logs('hostname')
+print "Results: https://your-subdomain.sentinelone.net/#/activity"
+pp.pprint(logs)
 
-pp.pprint(target_agent.json())
