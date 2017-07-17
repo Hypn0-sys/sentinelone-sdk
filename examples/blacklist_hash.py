@@ -16,6 +16,7 @@ console = parser.get('endpoints', 'prod_domain')
 client = sentinelone.SMgmt(user, passwd, console)
 client.auth()
 
+# Eicar and a unknown variant
 iocs = [
     'cff14e5536e86e086b12a2271d7b15c29aa1d2ae',
     '3395856ce81f2b7382dee72602f798b642f14140',

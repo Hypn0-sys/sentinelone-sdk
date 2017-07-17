@@ -6,9 +6,6 @@ __version__ = 'v0.1'
 __mo_song__ = 'https://www.youtube.com/watch?v=kCWZ-qKzjyQ'
 __my_quote__ = 'Give back what you can and dont be afraid to try'
 # SDK Built from SentinelOne's 1.8 API
-# Bugs: Self generated API tokens are broken via SentinelOne's UI
-# one must use inspect / dev mode if you want to grab that token
-# via network resources
 
 # pylint: disable=C0103
 # pylint: disable=R0913
@@ -259,7 +256,7 @@ class SMgmt(object):
 
     # The below methods are Agent actions across the fleet
     # USE WITH CAUTION
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Agents_Actions
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Agents_Actions
     def broadcast_msg(self, msg=None, query=None):
         """ Broadcast message to agents.
         uri: /apidoc/#api-Agents_Actions-BroadcastAgents """
@@ -408,7 +405,7 @@ class SMgmt(object):
 
 
     # Exclusion APIs
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Exclusion
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Exclusion
     def exclusion_list(self):
         """ Exclusion List """
         endpoint = '/exclusion-lists'
@@ -532,7 +529,7 @@ class SMgmt(object):
         return results
 
     # Hash API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Hash
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Hash
     def post_hash(self, ioc=None, os=None, is_black=bool, desc=None):
         """ POST SHA1 HASH of Indicator of Compromise (IOC) """
 
@@ -609,7 +606,7 @@ class SMgmt(object):
 
 
     # System Status API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Info
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Info
     def system_status(self):
         """ Retrieve system status """
 
@@ -629,7 +626,7 @@ class SMgmt(object):
 
 
     # Policy API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Policy
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Policy
     def list_policies(self):
         """ Retrieves the list of policies """
 
@@ -722,7 +719,7 @@ class SMgmt(object):
 
 
     # Reports API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-Reports
+    # https://your-subdomain.sentinelone.net/apidoc/#api-Reports
     def schedule_report(
             self,
             report_name=None,
@@ -819,7 +816,7 @@ class SMgmt(object):
 
 
     # System Configuration API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-System_Configuration
+    # https://your-subdomain.sentinelone.net/apidoc/#api-System_Configuration
     def syslog_setup(self, host=None, port=int, ssl=bool, syslog_format=None):
         """ Setup Syslog: Syslog format: ioc, cef, or stix """
 
@@ -1083,7 +1080,7 @@ class SMgmt(object):
 
 
     # USER API
-    # https://collectivehealth.sentinelone.net/apidoc/#api-User
+    # https://your-subdomain.sentinelone.net/apidoc/#api-User
     def change_password(
             self,
             user_id=None,

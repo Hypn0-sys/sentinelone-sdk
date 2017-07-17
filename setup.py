@@ -8,8 +8,8 @@ setup(
 
     author='Jacolon Walker',
     author_email='jacolon.walker@collectivehealth.com',
-    description='SentinelOne SDK which helps IT administrators and security teams help automate management of their Sentinelone fleet',
     license='Apache License 2.0',
     keywords='anti-malware anti-virus security management sentinelone sdk api',
-    url='http://collectivehealth.com/security',
+    long_description=open('README.md').read(),
+    url='https://collectivehealth.com/security',
 )
