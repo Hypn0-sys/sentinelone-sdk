@@ -11,11 +11,13 @@ rapid incident mitigation and escalation or auditing.
 ## Code Example
 
 ```
-from sentinel_core import *
-auth_token = login(req_auth=AUTH)
-results = count_agents(headers=auth_token)
-count = results.json()['count']
-print("There are %s registered endpoints" %(count))
+>>> from sentinelone import *
+>>> client = SMgmt('user', 'password', 'https://your-subdomain.sentinelone.net/web/api/v1.6')
+>>> client.auth()
+>>> results = client.agents_count()
+>>> count = results['count']
+>>> print("There are %s registered endpoints" %(count))
+There are 368 registered endpoints
 ```
 
 ## Motivation
@@ -28,6 +30,10 @@ has also help alleviate some of the manual effort of remediation and reporting.
 
 Open config.ini.example and drop in the right creds and domain. Then rename the
 config to config.ini. Once completed pip install the requirements.txt.
+```
+python setup.py install
+```
+or
 ```
 pip install -r requirements.txt
 ```
@@ -45,6 +51,10 @@ If you would like to get involved in contributing to this project, pull
 requests will be a great start, along with following any possible issues that
 might appear in the repository queue.
 
-## License
+## Copyright, License & Disclaimers
 
-self.note: licensing choices and a brief description (MIT, Apache, etc..)
+Copyright 2017 Collective Health, Inc
+
+This project is available under the Apache version 2.0 License. Please see LICENSE
+file.
+Apache version 2.0: https://www.apache.org/licenses/LICENSE-2.0.html

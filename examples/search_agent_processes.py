@@ -3,17 +3,28 @@ __author__ = 'Jacolon Walker'
 __email__ = 'jacolon.walker@collectivehealth.com'
 
 import pprint
-from sentinel_core import *
+import sentinelone
+from ConfigParser import SafeConfigParser
 
+parser = SafeConfigParser()
+parser.read('config.ini')
+
+user = parser.get('creds', 'user')
+passwd = parser.get('creds', 'passwd')
+console = parser.get('endpoints', 'prod_domain')
+
+# For debugging
 pp = pprint.PrettyPrinter(indent=4)
 
-auth_token = login(req_auth=AUTH)
+# Init
+client = sentinelone.SMgmt(user, passwd, console)
+client.auth()
 
-# replace 'system' with something you are search for
-target_agent = search_agents(headers=auth_token, query="system")
-# Store agent id for process searc
-for item in target_agent.json():
+# replace 'hostname' with something you are search for
+target_agent = client.agents_search("hostname")
+# Store agent id for process search
+for item in target_agent:
     agent_id = item['id']
 
-    results = agent_process_list(headers=auth_token, agent_id=agent_id)
-    pp.pprint(results.json())
+    results = client.agent_pslist(agent_id=agent_id)
+    pp.pprint(results)
