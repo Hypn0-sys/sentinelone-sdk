@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 __author__ = 'Jacolon Walker'
 __email__ = 'jacolon.walker@collectivehealth.com'
+__forked__ = 'Hypn0sys'
 
 import sentinelone
 
@@ -11,6 +12,6 @@ client.auth()
 
 results = client.agents_count()
 
-count = results['count']
+count = results['data']['total']
 
 print("There are %s registered endpoints" %(count))

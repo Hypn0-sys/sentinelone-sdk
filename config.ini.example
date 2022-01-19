@@ -1,10 +1,5 @@
-# Currently there seems to be an issue with self generated API Tokens from the
-# UI. Once this has been fixed we can just use one token allowing easier auth
-# management
 [creds]
-user = youruser
-passwd = yourpassword
+apitoken = YourApiTokenHere
 
 [endpoints]
-prod_domain = https://your-domain.sentinelone.net/web/api/v1.6
-dev_domain = https://your-domain.sentinelone.net/web/api/v1.6
+prod_domain = https://euce1-ocd1-1b.sentinelone.net/web/api/v1.6

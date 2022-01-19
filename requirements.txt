@@ -1,1 +1,2 @@
 requests==2.20.0
+ConfigParser==5.2.0

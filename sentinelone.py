@@ -2,9 +2,8 @@
 """ Core python SDK for SentinelOne Platform """
 __author__ = 'Jacolon Walker'
 __email__ = 'jacolon.walker@collectivehealth.com'
-__version__ = 'v0.1'
-__mo_song__ = 'https://www.youtube.com/watch?v=kCWZ-qKzjyQ'
-__my_quote__ = 'Give back what you can and dont be afraid to try'
+__version__ = 'v1.0'
+__forked__ = 'Hypn0sys'
 # SDK Built from SentinelOne's 1.8 API
 
 # pylint: disable=C0103
@@ -12,35 +11,30 @@ __my_quote__ = 'Give back what you can and dont be afraid to try'
 # pylint: disable=E1121
 
 # The basic imports
+from configparser import SafeConfigParser
 import requests
 
 class SMgmt(object):
     """ Core functions based on SentinelOne's API Docs
     https://your-subdomain.sentinelone.net/apidoc """
 
-    def __init__(self, user, passwd, domain):
+    def __init__(self):
         """ Defining the basic for API interaction """
 
         # Assigning variables from config.ini to code global variables
-        self.user = user
-        self.passwd = passwd
-        self.domain = domain
+        self.domain = None
         self.token = None
 
     def auth(self):
         """ Authentication to SentinelOne Management Console """
 
-        endpoint = '/users/login'
-        auth_header = {
-            'username': self.user,
-            'password': self.passwd,
-            }
-
-        r = requests.post(self.domain + endpoint, json=auth_header)
-        self.token = r.json()['token']
+        parser = SafeConfigParser()
+        parser.read('config.ini')
+        self.token = parser.get('creds', 'apitoken')
+        self.domain = parser.get('endpoints', 'prod_domain')
 
         self.header = {
-            'Authorization': 'Token %s' %(self.token),
+            'Authorization': 'ApiToken %s' %(self.token),
             'Content-Type': 'application/json',
             }
 
