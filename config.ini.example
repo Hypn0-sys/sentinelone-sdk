@@ -2,4 +2,4 @@
 apitoken = YourApiTokenHere
 
 [endpoints]
-prod_domain = https://euce1-ocd1-1b.sentinelone.net/web/api/v1.6
+prod_domain = https://domain.sentinelone.net/web/api/v2.0
